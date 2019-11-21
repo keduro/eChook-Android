@@ -34,6 +34,7 @@ public class BTStreamReader extends Thread {
     @Override
     public void run() {
 		byte[] buffer = new byte[1024];
+		int bytes;
 		long latestMillis = System.currentTimeMillis();
 
 	    this.stopWorker = false;
@@ -45,6 +46,7 @@ public class BTStreamReader extends Thread {
 
 				if (bytesAvailable > 0) {
 					byte[] packetBytes = new byte[bytesAvailable];
+					bytes = mmInStream.read(packetBytes);
 
 					// UpdateLocationSetting the timekeeping variable
 					latestMillis = System.currentTimeMillis();
@@ -56,7 +58,13 @@ public class BTStreamReader extends Thread {
 						if (b != Global.STOPBYTE) {
 							// delimiter not reached yet so continue adding to buffer
 							buffer[readBufferPosition] = b;
-							readBufferPosition++;
+							if (readBufferPosition < buffer.length) {
+								readBufferPosition++;
+							} else {
+								//something wrong if havne't received STOPBYTE within the length of the buffer
+								// for now, safe option, just reset the readBufferPosition
+								readBufferPosition = 0;
+							}
 						} else {
 							buffer[readBufferPosition] = b; // still need the delimiter
 							// delimiter reached; flush buffer into the global queue
@@ -72,7 +80,7 @@ public class BTStreamReader extends Thread {
 								BTDataParser.mHandler.sendEmptyMessage(0);
 							} catch (Exception e) {
 								EventBus.getDefault().post(new SnackbarEvent(e));
-e.printStackTrace();
+								e.printStackTrace();
 							}
 
 							// reset the buffer pointer
