@@ -153,6 +153,7 @@ public class MainActivity
 
         RequestAllPermissions();
 
+        UpdateMode();
         UpdateBTStatus();
         UpdateBTCarName();
         UpdateGear(0);
@@ -809,6 +810,18 @@ public class MainActivity
         });
     }
 
+    /**
+     * Updates the TextView at the bottom of the UI showing the mode i.e. RACE or DEMO
+     */
+    public void UpdateMode() {
+        MainActivityHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                myMode.setText(Global.Mode.toString());
+            }
+        });
+    }
+
 
     public void UpdateGear(final int shift) {
         MainActivityHandler.post(new Runnable() {
@@ -858,15 +871,17 @@ public class MainActivity
         switch (e.eventType) {
 
             case ModeChange:
-                myMode.setText(Global.Mode.toString());
+                //myMode.setText(Global.Mode.toString());
+                UpdateMode();
                 break;
             case BTDeviceNameChange:
                 UpdateBTStatus();
-                myBTCarName.setText(Global.BTDeviceName + " :: " + Global.CarName);
+                //myBTCarName.setText(Global.BTDeviceName + " :: " + Global.CarName);
+                UpdateBTCarName();
                 break;
             case CarNameChange:
                 UpdateBTCarName();
-                myBTCarName.setText(Global.BTDeviceName + " :: " + Global.CarName);
+                //myBTCarName.setText(Global.BTDeviceName + " :: " + Global.CarName);
                 break;
             case UDPChange:
                 break;
