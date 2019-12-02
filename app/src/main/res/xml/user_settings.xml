@@ -117,4 +117,32 @@
             android:summary="Public 6+ digit data identifier. dweet.io/follow/identifier"
             android:title="dweet.io 'Thing' name" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="prefKeyUserDefinedURLLiveData"
+        android:title="User Defined Live Data">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="prefUserDefinedURLEnabled"
+            android:summary="Upload live data to user defined URL"
+            android:title="Enable User Defined Live Data " />
+        <EditTextPreference
+            android:key="prefUserDefinedURLCarName"
+            android:summary="Car name used in User Defined Live Data"
+            android:title="User Defined Car Name" />
+        <EditTextPreference
+            android:key="prefUserDefinedURL"
+            android:summary="URL for posting Live Data to"
+            android:title="User Defined URL" />
+        <EditTextPreference
+            android:key="prefUserDefinedURLUsername"
+            android:summary="Username for user defined URL login"
+            android:title="User Defined URL Username" />
+        <EditTextPreference
+            android:inputType="textPassword"
+            android:key="prefUserDefinedURLPassword"
+            android:summary="Password for user defined URL login"
+            android:title="User Defined URL Password" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

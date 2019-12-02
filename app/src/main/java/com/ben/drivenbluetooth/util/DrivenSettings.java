@@ -32,10 +32,15 @@ public final class DrivenSettings {
         CarName(prefs);
         Graphs(prefs);
         dweetEnabled(prefs);
+        dweetThingName(prefs);
         echookEnabled(prefs);
         eChookCarName(prefs);
         eChookPassword(prefs);
-        dweetThingName(prefs);
+        userDefinedURLEnabled(prefs);
+        userDefinedURLCarName(prefs);
+        userDefinedURL(prefs);
+        userDefinedURLUsername(prefs);
+        userDefinedURLPassword(prefs);
     }
 
     public static void QuickChangeMode(Context context) {
@@ -170,6 +175,25 @@ public final class DrivenSettings {
         Global.eChookPassword = prefs.getString("prefEchookPassword", "");
     }
 
+    private static void userDefinedURLEnabled(SharedPreferences prefs) {
+        Global.userDefinedURLEnabled = prefs.getBoolean("prefUserDefinedURLEnabled", false);
+    }
+
+    private static void userDefinedURLCarName(SharedPreferences prefs) {
+        Global.userDefinedURLCarName = prefs.getString("prefUserDefinedURLCarName", "");
+    }
+
+    private static void userDefinedURL(SharedPreferences prefs) {
+        Global.userDefinedURL = prefs.getString("prefUserDefinedURL", "");
+    }
+
+    private static void userDefinedURLUsername(SharedPreferences prefs) {
+        Global.userDefinedURLUsername = prefs.getString("prefUserDefinedURLUsername", "");
+    }
+
+    private static void userDefinedURLPassword(SharedPreferences prefs) {
+        Global.userDefinedURLPassword = prefs.getString("prefUserDefinedURLPassword", "");
+    }
 
     public static int[] parseWheelTeeth(String wheelTeethString) {
         wheelTeethString = wheelTeethString.replaceAll("\\s+", ""); // remove spaces

@@ -286,7 +286,21 @@ e.printStackTrace();
                 case "prefEchookPassword":
                     Global.eChookPassword = sharedPreferences.getString("prefEchookPassword", "");
                     break;
-
+                case "prefUserDefinedURLEnabled":
+                    Global.userDefinedURLEnabled = sharedPreferences.getBoolean("prefUserDefinedURLEnabled", false);
+                    break;
+                case "prefUserDefinedURLCarName":
+                    Global.userDefinedURLCarName = sharedPreferences.getString("prefUserDefinedURLCarName", "");
+                    break;
+                case "prefUserDefinedURL":
+                    Global.userDefinedURL = sharedPreferences.getString("prefUserDefinedURL", "");
+                    break;
+                case "prefUserDefinedURLUsername":
+                    Global.userDefinedURLUsername = sharedPreferences.getString("prefUserDefinedURLUsername", "");
+                    break;
+                case "prefUserDefinedURLPassword":
+                    Global.userDefinedURLPassword = sharedPreferences.getString("prefUserDefinedURLPassword", "");
+                    break;
 			}
 		} catch (Exception e) {
             e.printStackTrace();

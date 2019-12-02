@@ -163,6 +163,11 @@ public final class Global {
     public static String eChookPassword                 = "";
     public static String eChookID                       = "";
 
+    public static boolean userDefinedURLEnabled         = false;
+    public static String userDefinedURLCarName          = "";
+    public static String userDefinedURL                 = "";
+    public static String userDefinedURLUsername         = "";
+    public static String userDefinedURLPassword         = "";
 
     //Depreciated - remove once code is updated.
     public static boolean enableLocationUpload          = false;
